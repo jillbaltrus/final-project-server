@@ -1,0 +1,30 @@
+{
+  "name": "final-project-server",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "backend server for CS4550 final project, uses Mongo and Node to fulfill HTTPS requests",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jillbaltrus/final-project-server"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "Server",
+    "HTTP"
+  ],
+  "author": "Jillian Baltrus",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.3.5",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "nodemon": "^2.0.22"
+  }
+}
