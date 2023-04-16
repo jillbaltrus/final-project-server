@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import session from "express-session";
 import UserController from "./controllers/users/user-controller.js";
+import EventsController from "./controllers/events/events-controller.js";
 
 // TODO: declare DB_TH_CONNECTION_STRING in bash profile once we know what it is
 const CONNECTION_STRING =
@@ -26,3 +27,4 @@ app.use(
 
 app.listen(process.env.PORT || 4000);
 UserController(app);
+EventsController(app);

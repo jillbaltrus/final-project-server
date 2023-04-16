@@ -16,7 +16,7 @@ const register = async (req, res) => {
     res.status(409).send("missing required field: first name");
     return;
   }
-  if (!req.body.username) {
+  if (!username) {
     res.status(409).send("missing required field: username");
     return;
   }
