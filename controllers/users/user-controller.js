@@ -6,7 +6,7 @@ const UserController = (app) => {
   app.post("/api/users/profile", profile);
   app.post("/api/users/logout", logout);
   app.get("/api/users", findUsers);
-  app.get("/api/users/:username", findUserByUsername);
+  app.get("/api/users/:uid", findUserById);
   app.put("/api/users/:uid", update);
 };
 
@@ -81,7 +81,11 @@ const findUsers = async (req, res) => {
 const findUserById = async (req, res) => {
   const userId = req.params.uid;
   const user = await usersDao.findUserById(userId);
-  res.json(user);
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(409).send("user not found");
+  }
 };
 
 const findUserByUsername = async (req, res) => {

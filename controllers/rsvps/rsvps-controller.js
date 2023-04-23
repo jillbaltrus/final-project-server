@@ -5,7 +5,8 @@ const RsvpsController = (app) => {
   app.get("/api/rsvps", findRsvps);
   app.get("/api/rsvps/events/:uid", findEventsByUser);
   app.get("/api/rsvps/users/:eid", findUsersByEvent);
-  app.delete("/api/rsvps/:rid", deleteRsvpById);
+  app.delete("/api/rsvps/:eid/:uid", deleteRsvpByEidAndUid);
+  app.delete("/api/rsvps/:eid", deleteRsvpsByEid);
 };
 
 const createRsvp = async (req, res) => {
@@ -38,9 +39,17 @@ const findEventsByUser = async (req, res) => {
     res.json(rsvps);
   };
 
-const deleteRsvpById = async (req, res) => {
-    const rsvpIdToDelete = req.params.rid;
-    const status = await rsvpsDao.deleteRsvp(rsvpIdToDelete);
+const deleteRsvpByEidAndUid = async (req, res) => {
+    const eidToDelete = req.params.eid;
+    const uidToDelete = req.params.uid;
+    const status = await rsvpsDao.deleteRsvp(eidToDelete, uidToDelete);
+    res.json(status);
+  };
+
+
+const deleteRsvpsByEid = async (req, res) => {
+    const eidToDelete = req.params.eid;
+    const status = await rsvpsDao.deleteRsvpsForEvent(eidToDelete);
     res.json(status);
   };
 

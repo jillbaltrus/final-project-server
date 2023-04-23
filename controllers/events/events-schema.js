@@ -8,9 +8,7 @@ const eventsSchema = mongoose.Schema(
     location: String,
     description: String,
     points: {
-      type: [
-        { enum: ["ACADEMIC", "DEI", "GREEK", "RISK", "SISTERHOOD", "CS"] },
-      ],
+      type: [String],
       default: [],
     },
     mandatory: { type: Boolean, default: false },

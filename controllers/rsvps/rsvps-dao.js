@@ -12,6 +12,8 @@ export const findRsvpsByUser = async (uid) => {
     return events;
 }
 
-export const deleteRsvp = (rid) => rsvpsModel.deleteOne({ _id: rid });
+export const deleteRsvp = (eid, uid) => rsvpsModel.deleteOne({ event: eid, user: uid });
+
+export const deleteRsvpsForEvent = (eid) => rsvpsModel.deleteMany({ event: eid });
 
 export const createRsvp = (rsvp) => rsvpsModel.create(rsvp);
